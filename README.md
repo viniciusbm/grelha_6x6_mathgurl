@@ -1,6 +1,6 @@
 # Grelha 6x6 — Solução
 
-Programa que resolve o desafio "Grelha 6x6", proposto pela MathGurl no
+Programa que resolve o desafio "Grelha 6x6", proposto pela MathGurl (Inês Guimarães) no
 seu [vídeo](https://www.youtube.com/watch?v=N2Lr1NVLGVw), usando uma biblioteca de programação linear.
 
 ## Desafio
@@ -95,7 +95,8 @@ e $j$ e $j'$ de $0$ a $n - 1$.
 O programa [grelha.py](grelha.py) recebe $m$ e $n$ como argumentos (ambos $6$) por padrão e produz uma solução do
 desafio com o menor valor máximo possível.
 
-Além do Python 3.10 ou mais recente, a única dependência é o pacote [OR-Tools](https://developers.google.com/optimization/install) para Python, que faz o
+Além do Python 3.10 ou mais recente, a única dependência é o
+pacote [OR-Tools](https://developers.google.com/optimization/install) para Python, que faz o
 cálculo da solução do problema de programação linear inteira:
 
 ```shell
@@ -109,3 +110,6 @@ python grelha.py 6 6
 ```
 
 (ou `python3` em vez de `python`, dependendo da instalação) para obter uma solução no terminal.
+
+Convém notar que, como nesta modelagem há $O(m^2 n^2)$ variáveis e restrições, a resposta não é instantânea e pode não
+ser obtida se a grelha for muito grande. Porém, para $m = n = 6$, o programa termina em poucos segundos. 
