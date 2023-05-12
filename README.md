@@ -5,15 +5,15 @@ seu [vídeo](https://www.youtube.com/watch?v=N2Lr1NVLGVw), usando uma biblioteca
 
 ## Desafio
 
-Preencher todas as células de uma grelha $6 \times 6$ com números inteiros entre $1$ e $8$ de modo que a distância (
-vertical + horizontal) entre quaisquer duas células preenchidas com o mesmo número seja maior que esse número.
+Preencher todas as células de uma grelha $6 \times 6$ com números inteiros entre $1$ e $8$ de modo que a distância
+(vertical + horizontal) entre quaisquer duas células preenchidas com o mesmo número seja maior que esse número.
 
 ## Em linguagem matemática
 
-Dados $m$, $n$ e $y$, preencher uma matrix $X$ de dimensões $m\times n$ com inteiros $1\leq x_{ij}\leq k$ de modo que
+Dados $m$, $n$ e $y$, preencher uma matrix $X$ de dimensões $m\times n$ com inteiros $1\leq x_{ij}\leq y$ de modo que
 $\left|i-i'\right|+\left|j-j'\right|\gt x_{ij}$ para todos $(i, j)$ e $(i', j')$ distintos tais que $x_{ij}=x_{i'j'}$.
 
-O objetivo é resolver este problema com $m=n=6$ e $k=8$.
+O objetivo é resolver este problema com $m=n=6$ e $y=8$.
 
 ## Modelagem com programação linear inteira
 
@@ -26,8 +26,8 @@ Queremos minimizar $y$ sujeito às restrições:
 
 - $x_{i, j}\geq 1$ para todo $(i, j)$;
 - $y\geq x_{i, j}$ para todo $(i, j)$;
-- $\left|i-i'\right|+\left|j-j'\right|\gt x_{ij}$ para todos $(i, j)$ e $(i', j')$ tais que $(i, j) \neq (i', j')$ e $`x_
-  {ij}=x_{i'j'}`$.
+- $\left|i-i'\right|+\left|j-j'\right|\gt x_{ij}$ para todos $(i, j)$ e $(i', j')$ tais que $(i, j) \neq (i', j')$ e
+  $x_{ij}=x_{i'j'}$.
 
 De modo a obter restrições *lineares* correspondentes ao último item, vamos introduzir duas variáveis para cada $(i, j)$
 e $(i', j')$ distintos (sem necessidade de repetição):
@@ -36,12 +36,12 @@ e $(i', j')$ distintos (sem necessidade de repetição):
 - $`w_{iji'j'} = \begin{cases} 0, & \text{se } x_{ij} \geq x_{i'j'} \\ 1, & \text{se } x_{ij} \lt x_{i'j'}.\end{cases}`$
 
 Uma solução trivial do problema (sem considerar o valor máximo) é preencher a grelha com todos os números naturais entre
-$1$ e $m\ n$. Logo, podemos considerar apenas soluções em que quaisquer dois valores preenchidos têm diferença inferior
-a $m\ n$.
+$1$ e $m\ n$. Logo, podemos considerar apenas soluções em que nenhum $x_{ij}$ é maior que $m\ n$.
 
 ### Transformação para restrições lineares
 
-As seguintes restrições, para todos $(i, j)$ e $(i', j')$, garantem que os valores de $z_{iji'j'}$ e $w_{iji'j'}$ sejam
+As seguintes restrições, para todos $(i, j)$ e $(i', j')$ distintos,
+garantem que os valores de $z_{iji'j'}$ e $w_{iji'j'}$ sejam
 escolhidos conforme a definição acima:
 
 - $0 \leq z_{iji'j'} \leq 1$;
