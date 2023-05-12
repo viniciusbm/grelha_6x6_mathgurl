@@ -26,14 +26,13 @@ Queremos minimizar $y$ sujeito às restrições:
 
 - $x_{i, j}\geq 1$ para todo $(i, j)$;
 - $y\geq x_{i, j}$ para todo $(i, j)$;
-- $\left|i-i'\right|+\left|j-j'\right|\gt x_{ij}$ para todos $(i, j)$ e $(i', j')$ tais que $(i, j) \neq (i', j')$ e $x_
-  {ij}=x_{i'j'}$.
+- $\left|i-i'\right|+\left|j-j'\right|\gt x_{ij}$ para todos $(i, j)$ e $(i', j')$ tais que $(i, j) \neq (i', j')$ e $`x_
+  {ij}=x_{i'j'}`$.
 
 De modo a obter restrições *lineares* correspondentes ao último item, vamos introduzir duas variáveis para cada $(i, j)$
 e $(i', j')$ distintos (sem necessidade de repetição):
 
-- $`z_{iji'j'} = \begin{cases} 0, & \text{se } x_{ij} \leq x_{i'j'} \\ 1, & \text{se } x_{ij} \gt x_{i'j'}; \end{cases}`
-  $
+- $`z_{iji'j'} = \begin{cases} 0, & \text{se } x_{ij} \leq x_{i'j'} \\ 1, & \text{se } x_{ij} \gt x_{i'j'}; \end{cases}`$
 - $`w_{iji'j'} = \begin{cases} 0, & \text{se } x_{ij} \geq x_{i'j'} \\ 1, & \text{se } x_{ij} \lt x_{i'j'}.\end{cases}`$
 
 Uma solução trivial do problema (sem considerar o valor máximo) é preencher a grelha com todos os números naturais entre
@@ -52,9 +51,10 @@ escolhidos conforme a definição acima:
 - $x_{ij} - m\ n\ z_{iji'j'} \leq x_{i'j'} - w_{iji'j'}$.
 
 **Demonstração.** Essas restrições garantem que os únicos casos possíveis para $(z_{iji'j'}, w_{iji'j'})$ são $(0, 0)$,
-$(0, 1)$ e $(1, 0)$. No primeiro caso, as duas últimas restrições se reduzem a $x_{ij}\geq x_{iji'j'}$ e $x_{ij}\leq x_
-{iji'j'}$, garantindo o que pede a definição; no segundo caso, a penúltima restrição é sempre satisfeita ($x_{ij} + m\ n
-\geq x_{i'j'}$, i.e. $x_{i'j'} - x_{ij} \leq m\ n$), e a última restrição se reduz a $x_{ij} \leq x_{i'j'} - 1$,
+$(0, 1)$ e $(1, 0)$. No primeiro caso, as duas últimas restrições se reduzem a $x_{ij}\geq x_{iji'j'}$ e
+$x_{ij}\leq x_{iji'j'}$, garantindo o que pede a definição; no segundo caso, a penúltima restrição é sempre satisfeita
+($x_{ij} + m\ n \geq x_{i'j'}$, i.e. $x_{i'j'} - x_{ij} \leq m\ n$),
+e a última restrição se reduz a $x_{ij} \leq x_{i'j'} - 1$,
 garantindo que $x_{ij}\lt x_{i'j'}$ conforme exigido pela definição; e o último caso é análogo ao anterior,
 invertendo-se as desigualdades.
 
@@ -66,8 +66,9 @@ Com isto, podemos reescrever a restrição principal do problema da seguinte man
 **Demonstração.** É imediato que $z_{iji'j'} + w_{iji'j'}=0 \iff z_{iji'j'} = w_{iji'j'}=0 \iff x_{ij}=x_{i'j'}$. Logo,
 sempre que essa igualdade ocorre, a restrição acima se reduz a $\left|i-i'\right|+\left|j-j'\right| \gt x_{ij}$, que é
 precisamente a condição desejada. Quando a igualdade não ocorre, tem-se $z_{iji'j'} + w_{iji'j'} = 1$, e a restrição
-acima equivale a $\left|i-i'\right|+\left|j-j'\right| + m\ n \gt x_{ij}$, o que é sempre verdadeiro porque $x_{ij} \leq
-m\ n$ e $\left|i-i'\right|+\left|j-j'\right|\gt 0$ sempre que $(i, j) \neq (i', j')$; portanto, quando os valores são
+acima equivale a $\left|i-i'\right|+\left|j-j'\right| + m\ n \gt x_{ij}$, o que é sempre verdadeiro porque
+$x_{ij} \leq m\ n$ e
+$\left|i-i'\right|+\left|j-j'\right|\gt 0$ sempre que $(i, j) \neq (i', j')$; portanto, quando os valores são
 diferentes, nenhuma condição é imposta, como esperado.
 
 ### O problema de programação linear
